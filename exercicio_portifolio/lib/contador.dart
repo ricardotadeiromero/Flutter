@@ -14,11 +14,17 @@ class _ContadorPageState extends State<ContadorPage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-      if(_counter>10){
-        style = TextStyle(color: Colors.red, fontSize: 30, fontWeight: FontWeight.w500);
-      } if(_counter>20){
-        style = TextStyle(color: Color.fromARGB(255, 253, 0, 139), fontSize: 50, fontWeight: FontWeight.w800);
-      } if(_counter<10){
+      if (_counter > 10) {
+        style = TextStyle(
+            color: Colors.red, fontSize: 30, fontWeight: FontWeight.w500);
+      }
+      if (_counter > 20) {
+        style = TextStyle(
+            color: Color.fromARGB(255, 253, 0, 139),
+            fontSize: 40,
+            fontWeight: FontWeight.w800);
+      }
+      if (_counter < 10) {
         style = style = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
       }
     });
@@ -30,18 +36,46 @@ class _ContadorPageState extends State<ContadorPage> {
       if (_counter <= 0) {
         _counter = 0;
       }
-      if(_counter>10){
-        style = TextStyle(color: Colors.red, fontSize: 30, fontWeight: FontWeight.w500);
-      } if(_counter>20){
-        style = TextStyle(color: Color.fromARGB(255, 253, 0, 139), fontSize: 50, fontWeight: FontWeight.w800);
-      } if(_counter<10){
+      if (_counter > 10) {
+        style = TextStyle(
+            color: Colors.red, fontSize: 30, fontWeight: FontWeight.w500);
+      }
+      if (_counter > 20) {
+        style = TextStyle(
+            color: Color.fromARGB(255, 253, 0, 139),
+            fontSize: 50,
+            fontWeight: FontWeight.w800);
+      }
+      if (_counter < 10) {
         style = style = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Contador'),
+          backgroundColor: Colors.black,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/jogador');
+                },
+                icon: Icon(Icons.sports_soccer)),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/contador');
+                },
+                icon: Icon(Icons.calculate)),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/info');
+                },
+                icon: Icon(Icons.info))
+          ],
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -92,11 +126,9 @@ class _ContadorPageState extends State<ContadorPage> {
                 ],
               ),
               SizedBox(height: 30),
-              Text('Valor do contador: $_counter',
-                  style: style)
+              Text('Valor do contador: $_counter', style: style)
             ],
           ),
-        )
-      );
+        ));
   }
 }

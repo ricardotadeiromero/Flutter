@@ -1,4 +1,7 @@
+import 'package:exercicio_portifolio/contador.dart';
 import 'package:exercicio_portifolio/home.dart';
+import 'package:exercicio_portifolio/jogador.dart';
+import 'package:exercicio_portifolio/info.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => Home()
+        '/': (context) => Home(),
+        '/jogador': (context) => Jogador(),
+        '/contador': (context) => ContadorPage(),
+        '/info': (context) => Info()
       },
     );
   }
