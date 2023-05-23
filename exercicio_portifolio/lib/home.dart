@@ -21,24 +21,13 @@ class _HomeState extends State<Home> {
   void _itemClicado(int index) {
     setState(() {
       _indice = index;
-      switch (index) {
-        case 0:
-          Navigator.pushNamed(context, '/jogador');
-          break;
-        case 1:
-          Navigator.pushNamed(context, '/contador');
-          break;
-        case 2:
-          Navigator.pushNamed(context, '/info');
-          break;
-      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Jogador(),
+        body: _telas[_indice],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _indice,
           onTap: _itemClicado,
