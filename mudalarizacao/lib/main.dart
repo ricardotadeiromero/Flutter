@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mudalarizacao/cadastro.dart';
+import 'package:mudalarizacao/list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyCadastro(),
+      routes: {
+        '/': (context) => const MyCadastro(),
+        '/list' : (context) => const MyList()
+      },
     );
   }
 }

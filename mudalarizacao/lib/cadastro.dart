@@ -22,6 +22,15 @@ class _MyCadastroState extends State<MyCadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Cadastro'),
+        backgroundColor: Theme.of(context).primaryColor,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context, '/list');
+          }, icon: Icon(Icons.list_alt_outlined))
+        ],
+      ),
       body: Center(child: Column(children: [
         TextField(
           controller: campoRa,

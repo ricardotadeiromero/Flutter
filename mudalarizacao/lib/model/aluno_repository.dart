@@ -2,20 +2,27 @@
 import 'aluno.dart';
 
 class AlunoRepository {
+  static List<Aluno> _listaAlunos = [];
 
-  List<Aluno> _listaAlunos = [];
+  static get get => _listaAlunos;
+
+  set set(value) => _listaAlunos = value;
+
   AlunoRepository();
 
-    void adicionar (Aluno al){
-      _listaAlunos.add(al);
+  void adicionar(Aluno al) {
+    _listaAlunos.add(al);
+  }
+
+  static void del(Aluno al) {
+     _listaAlunos.remove(al);
+      
+    
+  }
+
+  void imprimir() {
+    for (var aluno in _listaAlunos) {
+      print(aluno.toString());
     }
-
-    void imprimir(){
-      for (var aluno in _listaAlunos) {
-        print(aluno.toString());
-      }
-    }
-
-  
-
+  }
 }
