@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mudalarizacao/model/aluno.dart';
 import 'package:mudalarizacao/model/aluno_repository.dart';
 
+import 'edit.dart';
+
 class MyList extends StatefulWidget {
   const MyList({super.key});
 
@@ -14,7 +16,9 @@ class _MyListState extends State<MyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: []),
+        appBar: AppBar(
+          title: Text('Lista'),
+        ),
         body: ListView.separated(
             itemBuilder: (context, index) {
               return ListTile(
@@ -23,13 +27,30 @@ class _MyListState extends State<MyList> {
                 ),
                 title: Text(list[index].nome),
                 subtitle: Text(list[index].ra.toString()),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    setState(() {
-                      AlunoRepository.del(list[index]);
-                    });
-                  },
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyEdit(al: list[index]),
+                          ),
+                        ).then((_) => setState(() {}));
+
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () {
+                        setState(() {
+                          AlunoRepository.del(list[index]);
+                        });
+                      },
+                    ),
+                  ],
                 ),
               );
             },

@@ -23,32 +23,42 @@ class _MyCadastroState extends State<MyCadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastro'),
+        title: const Text('Cadastro'),
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(onPressed: (){
             Navigator.pushNamed(context, '/list');
-          }, icon: Icon(Icons.list_alt_outlined))
+          }, icon: const Icon(Icons.list_alt_outlined))
         ],
       ),
-      body: Center(child: Column(children: [
-        TextField(
-          controller: campoRa,
-        ),
-        TextField(
-          controller: campoNome,
-        ),
-        ElevatedButton(onPressed: () {
-          ra = int.parse(campoRa.text);
-          nome = campoNome.text;
-          Aluno al = Aluno(ra,nome);
-          rep.adicionar(al);
-          rep.imprimir();
-          setState(() {
-            
-          });
-        }, child: Text("Cadastar"))
-      ],),),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(child: Column(children: [
+          TextField(
+            decoration: const InputDecoration(
+              hintText: 'RA'
+            ),
+            controller: campoRa,
+          ),
+          TextField(
+            decoration: const InputDecoration(
+              hintText: 'Nome'
+            ),
+            controller: campoNome,
+          ),
+          ElevatedButton(onPressed: () {
+            ra = int.parse(campoRa.text);
+            nome = campoNome.text;
+            Aluno al = Aluno(ra,nome);
+            rep.adicionar(al);
+            campoNome.clear();
+            campoRa.clear();
+            setState(() {
+              
+            });
+          }, child: const Text("Cadastar"))
+        ],),),
+      ),
     );
   }
 }
